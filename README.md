@@ -15,8 +15,8 @@ This is an example for camera calibration using ArUco library through OpenCV.
 
 ## Installation/Requirement
 
-	$ git clone git@github.com:takuya-ki/camera-calibration-using-aruco-board.git
-	$ cd camera-calibration-using-aruco-board
+	$ git clone git@github.com:takuya-ki/aruco-camera-calibration.git
+	$ cd aruco-camera-calibration
 
 - Anaconda (use jupyter notebook)
 - python 3.6.0
@@ -24,7 +24,6 @@ This is an example for camera calibration using ArUco library through OpenCV.
 
 ## Author/Contributors
 
-qiita: [@tomochiii](http://qiita.com/tomochiii)  
 [Takuya Kiyokawa](http://qiita.com/takuya-ki)
 
 ## License
