@@ -1,17 +1,17 @@
 # camera-calibration-using-aruco-board
-This is a camera caribration tool using opencv ArUco module.
+A camera caribration tool using opencv ArUco module
 
 ## Description
 
-This is an example for camera calibration using ArUco library through OpenCV.
+An example for camera calibration using ArUco library through OpenCV
 
 ## Features
 
-- Use AR library, [ArUco](https://www.uco.es/investiga/grupos/ava/node/26)
-- Use Computer Vision library, [OpenCV](https://opencv.org/)
-- Use an ArUco doard
+- AR library, [ArUco](https://www.uco.es/investiga/grupos/ava/node/26)
+- Computer Vision library, [OpenCV](https://opencv.org/)
+- ArUcoboard
 
-<img src="./sample_board.png" width=50%　align=left>
+<img src="./board/sample_board.png" width=50%　align=left>
 
 ## Installation/Requirement
 
