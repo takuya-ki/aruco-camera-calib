@@ -52,4 +52,4 @@ Camera caribration tool with ArUco library
 
 ## License
 
-This software is released under the MIT License, see LICENSE.
+This software is released under the MIT License, see [LICENSE](./LICENSE).
