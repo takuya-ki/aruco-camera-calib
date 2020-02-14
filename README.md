@@ -50,7 +50,7 @@ Camera caribration tool with ArUco library
 
 ## Author
 
-[Takuya Kiyokawa](http://qiita.com/takuya-ki)
+[Takuya Kiyokawa](https://takuya-ki.github.io/)
 
 ## License
 
