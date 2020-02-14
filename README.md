@@ -37,6 +37,14 @@ An example for camera calibration using ArUco library through OpenCV
 
     # execute lines of board_creation.ipynb 
 
+#### Detect aruco board in input images
+
+    # execute lines of board_detection.ipynb
+
+#### Calibrate camera with images capturing aruco board
+
+    # execute lines of board_calibration.ipynb
+
 ## Author/Contributors
 
 [Takuya Kiyokawa](http://qiita.com/takuya-ki)
