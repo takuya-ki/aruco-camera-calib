@@ -27,6 +27,16 @@ An example for camera calibration using ArUco library through OpenCV
     $ conda install jupyter
     $ conda install -c michael_wild opencv-contrib
 
+## Usage
+
+#### Create aruco markers
+
+    # execute lines of marker_creation.ipynb
+
+#### Create aruco board needed for calibration
+
+    # execute lines of board_creation.ipynb 
+
 ## Author/Contributors
 
 [Takuya Kiyokawa](http://qiita.com/takuya-ki)
