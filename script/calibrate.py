@@ -37,9 +37,10 @@ squareNumX, boardSizeX = max_within_upper(squareL*1000, A4size[0]- lr*2 ) # in m
 squareNumY, boardSizeY = max_within_upper(squareL*1000, A4size[1]- tb*2 ) # in mm
 
 # Calibration #
-calibration_image_path = "./calib_pictures_hiro3/"
-image_format = "JPG"
-save_format = "json"
+calibration_image_path = "./calib_pictures_rsd415/"
+image_format = "bmp"
+save_format = "pkl"
+# save_format = "json"
 
 def imshow_inline(img_name="", img=None):
     if img is None:
@@ -248,8 +249,8 @@ def undistort(cam_param_path, images):
     ax = fig.add_subplot(1, 1, 1)
     ax.scatter(pts[:,0], pts[:,1], 2, 'r', alpha=.5)
     ax.scatter(pts_new[:,0], pts_new[:,1], 2, 'b', alpha=.5)
-    plt.xlim([0,3000])
-    plt.ylim([0,2250])
+    # plt.xlim([0, w])
+    # plt.ylim([0, h])
     plt.show()
 
     # Writing the camera matrix #
@@ -294,9 +295,9 @@ def main():
     calibrate_with_ChArUco_board(get_calibration_images(calib_img_paths))
     
     ## Undistort ##
-    # cam_param_path = "./camera_param.pkl"
+    cam_param_path = "./camera_param.pkl"
     # weak_undistort(cam_param_path, get_calibration_images(calib_img_paths))
-    # undistort(cam_param_path, get_calibration_images(calib_img_paths))
+    undistort(cam_param_path, get_calibration_images(calib_img_paths))
 
 if __name__ == '__main__':
     main()
