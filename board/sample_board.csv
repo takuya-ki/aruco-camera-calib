@@ -1,5 +1,5 @@
-dictionary ID,2
+dictionary ID,5
 square length,0.028
 marker length,0.024
 number of squares (x and y),7,10
-minimul margin (tb and lr),5,5
+minimum margin (tb and lr),5,5

@@ -1,11 +1,5 @@
-
 __pycache__/
 .ipynb_checkpoints
 *pictures/
-*result/
-
-*.bmp
-*.png
-*.jpg
-
+*markers/
 *.vscode
