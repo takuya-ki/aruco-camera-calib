@@ -19,6 +19,7 @@ Camera caribration tool with ArUco library
 - python 3.6.0 (tested)
 - opencv-contrib
 - jupyter
+- pandas
 
 ## Installation
 
@@ -44,6 +45,7 @@ Camera caribration tool with ArUco library
 
 #### Calibrate camera with images capturing aruco board
 
+    # set csv file path containing board configuration parameters
     # execute lines of board_calibration.ipynb
 
 ## Author
