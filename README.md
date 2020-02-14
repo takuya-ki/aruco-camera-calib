@@ -1,29 +1,30 @@
 # aruco-camera-calib
 
-A camera caribration tool using opencv ArUco module
-
-## Description
-
-An example for camera calibration using ArUco library through OpenCV
+Camera caribration tool with ArUco library
 
 ## Features
 
-- AR library, [ArUco](https://www.uco.es/investiga/grupos/ava/node/26)
-- Computer Vision library, [OpenCV](https://opencv.org/)
-- ArUcoboard
+- Programs are executed on [Jupyter Notebook](https://jupyter.org/)
+- Use AR library, [ArUco](https://www.uco.es/investiga/grupos/ava/node/26)
+- Use Computer Vision library, [OpenCV](https://opencv.org/)
+- Calibration with ArUcoboard
 
-<img src="./board/sample_board.png" width=50%　align=left>
+<div align="center">
+    <img src="board/sample_board.png", width="30%">
+</div>
 
 ## Requirements
 
-- Anaconda with jupyter notebook
-- python 3.6.0
+- Anaconda
+- python 3.6.0 (tested)
 - opencv-contrib
+- jupyter
 
 ## Installation
 
 	$ git clone git@github.com:takuya-ki/aruco-camera-calib.git
 	$ cd aruco-camera-calib
+    $ conda activate your_conda_env
     $ conda install jupyter
     $ conda install -c michael_wild opencv-contrib
 
@@ -45,7 +46,7 @@ An example for camera calibration using ArUco library through OpenCV
 
     # execute lines of board_calibration.ipynb
 
-## Author/Contributors
+## Author
 
 [Takuya Kiyokawa](http://qiita.com/takuya-ki)
 
