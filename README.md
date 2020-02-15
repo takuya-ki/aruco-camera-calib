@@ -31,6 +31,8 @@ Camera caribration tool with ArUco library
 
 ## Usage
 
+    $ cd jupyter # important because os.getcwd() are used
+
 #### Create aruco markers
 
     # execute lines of marker_creation.ipynb
