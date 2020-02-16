@@ -16,7 +16,7 @@ Camera caribration tool with ArUco library
 ## Requirements
 
 - Anaconda
-- python 3.6.0 (tested)
+- Python 3.6.0 (tested)
 - opencv-contrib
 - jupyter
 - pandas
@@ -30,8 +30,6 @@ Camera caribration tool with ArUco library
     $ conda install -c michael_wild opencv-contrib
 
 ## Usage
-
-    $ cd jupyter # important because os.getcwd() are used
 
 #### Create aruco markers
 
@@ -47,6 +45,7 @@ Camera caribration tool with ArUco library
 
 #### Calibrate camera with images capturing aruco board
 
+    # place target images (around 100 images) under pictures/
     # set csv file path containing board configuration parameters
     # execute lines of board_calibration.ipynb
 
