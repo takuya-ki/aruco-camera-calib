@@ -28,10 +28,6 @@ dictionary = aruco.getPredefinedDictionary(dictionaryID)
 squareL = float(df_board_configs.loc['square_length'])
 markerL = float(df_board_configs.loc['marker_length'])
 pixels_per_mm = 10 # for checker board image
-A4size = (210, 297)
-# minimum margin (height, width) when printing in mm
-tb = int(df_board_configs.loc['margin_tb'])
-tb = int(df_board_configs.loc['margin_lr'])
 # unit: mm
 squareNumX = int(df_board_configs.loc['num_squares_x'])
 squareNumY = int(df_board_configs.loc['num_squares_y'])
@@ -50,16 +46,6 @@ def get_file_paths(file_dirpath, file_ext):
                     for fs in file_names]
     print(file_names)
     return file_paths, file_names
-
-
-def imshow_inline(img_path="", img=None):
-    if img is None:
-        if not img_path:
-            print("Give imshow_inline an image path or an image data.")
-            return -1
-        else:
-            img = cv2.imread(img_path)
-    plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
 
 
 def get_board_image():
