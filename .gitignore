@@ -1,9 +1,9 @@
 __pycache__/
 .ipynb_checkpoints
+.vscode
+
 /pictures/*
 !/pictures/sample/
-!/pictures/calib/
-/pictures/calib/undistort_result/*
 /markers/*
 !/markers/sample/
-*.vscode
+/result/*

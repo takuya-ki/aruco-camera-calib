@@ -1,9 +1,12 @@
-import cv2
-import matplotlib.pyplot as plt
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import os
+import cv2
 import glob
-import pandas as pd
 import pickle
+import pandas as pd
+import matplotlib.pyplot as plt
 
 
 plt.rcParams['figure.figsize'] = (10.0, 10.0)

@@ -16,10 +16,14 @@ Camera caribration tool with ArUco library
 ## Requirements
 
 - Anaconda
-- Python 3.6.0 (tested)
+- Python3
+- numpy
+- pickle
+- matplotlib
 - opencv-contrib
 - jupyter
 - pandas
+- Pillow
 
 ## Installation
 
@@ -29,7 +33,7 @@ Camera caribration tool with ArUco library
     $ conda install jupyter
     $ conda install -c michael_wild opencv-contrib
 
-## Usage
+## Usage on jupyter notebook
 
 #### Create aruco markers
 
@@ -45,9 +49,17 @@ Camera caribration tool with ArUco library
 
 #### Calibrate camera with images capturing aruco board
 
-    # place target images (around 100 images) under pictures/
+    # place input images under pictures/
     # set csv file path containing board configuration parameters
     # execute lines of board_calibration.ipynb
+
+## Usage of python script
+
+    $ python marker_creation.py   # to create marker pictures
+    $ python board_creation.py    # to create a board picture
+    $ python board_detection.py   # to detect a board in images
+    $ python board_calibration.py # to calibration with images
+
 
 ## Author
 
