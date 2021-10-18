@@ -46,7 +46,7 @@ show_calib_result_on = True
 decimation_interval = 2 # 1 means not applied
 
 # test the calibration result
-undistortion_on = True
+undistortion_on = False
 undistort_result_dirpath = \
     os.path.join(calib_image_dirpath, "undistort_result/")
 param_filepath = os.path.join(os.getcwd(), "../result/camera_param.pkl")
@@ -188,6 +188,9 @@ def calibrate_with_ChArUco_board(calibImages,
     
     fpath = os.path.join(calib_result_savedirpath, 
                          calib_result_savename)
+    # make save dir
+    os.makedirs(calib_result_savedirpath, 
+                exist_ok=True)
     if calib_result_save_format == 'json':
         with open(fpath+'.json', mode='w') as f:
             data = {"camera_matrix": cameraMatrix.tolist(), 
@@ -222,7 +225,7 @@ def undistort(cam_param_path, images):
                             cameraMatrix, 
                             distCoeffs, 
                             None, newcameramtx)
-        
+
         # crop the image
         x, y, w, h = roi
         dst = dst[y:y+h, x:x+w]
