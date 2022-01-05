@@ -51,10 +51,10 @@ Camera caribration tool with ArUco library
 
 ## Usage of python script
 
-    $ python marker_creation.py   # to create marker pictures
-    $ python board_creation.py    # to create a board picture
-    $ python board_detection.py   # to detect a board in images
-    $ python board_calibration.py # to calibration with images
+    $ python scripts/marker_creation.py   # to create marker pictures
+    $ python scripts/board_creation.py    # to create a board picture
+    $ python scripts/board_detection.py   # to detect a board in images
+    $ python scripts/board_calibration.py # to calibration with images
 
 ## Author
 
