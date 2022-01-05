@@ -13,25 +13,21 @@ Camera caribration tool with ArUco library
     <img src="board/sample_board.png", width="30%">
 </div>
 
-## Requirements
+## Requirements (tested)
 
-- Anaconda
-- Python3
-- numpy
-- pickle
-- matplotlib
-- opencv-contrib
-- jupyter
-- pandas
-- Pillow
+- Python 3.7.3
+  - numpy 1.21.5
+  - pickle-mixin 1.0.2
+  - matplotlib 3.1.1
+  - opencv-contrib-python 3.4.2.17
+  - jupyter 1.0.0
+  - pandas 1.1.0
+  - pillow 5.4.1
 
 ## Installation
 
 	$ git clone git@github.com:takuya-ki/aruco-camera-calib.git
-	$ cd aruco-camera-calib
-    $ conda activate your_conda_env
-    $ conda install jupyter
-    $ conda install -c michael_wild opencv-contrib
+	$ pip install -r requirements.txt
 
 ## Usage on jupyter notebook
 
@@ -59,7 +55,6 @@ Camera caribration tool with ArUco library
     $ python board_creation.py    # to create a board picture
     $ python board_detection.py   # to detect a board in images
     $ python board_calibration.py # to calibration with images
-
 
 ## Author
 
