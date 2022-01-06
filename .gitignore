@@ -7,3 +7,5 @@ __pycache__/
 /markers/*
 !/markers/sample/
 /result/*
+
+jupyter
