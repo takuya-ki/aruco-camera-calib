@@ -21,7 +21,7 @@ Camera caribration tool with ArUco library
   - matplotlib 3.1.1
   - opencv-contrib-python 3.4.2.17
   - pandas 1.1.0
-  - pillow 5.4.1
+  - pillow 8.4.0
 
 ## Installation
 
