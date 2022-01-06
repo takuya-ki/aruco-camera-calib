@@ -10,7 +10,7 @@ Camera caribration tool with ArUco library
 - Calibration with ArUcoboard
 
 <div align="center">
-    <img src="board/sample_board.png", width="30%">
+    <img src="data/board/sample_board.png", width="30%">
 </div>
 
 ## Requirements (tested)
@@ -31,7 +31,7 @@ Camera caribration tool with ArUco library
 ## Usage
 
     $ python scripts/marker_creation.py --dict 'DICT_4X4_250' --num_pixels 64 --num_markers 5 --out_dir ../data/markers/
-    $ python scripts/board_creation.py    # to create a board picture
+    $ python script/board_creation.py --dict 'DICT_5X5_100' --out_dir ../data/board --board_name sample_board --square_length 0.028 --marker_length 0.024 --h_margin 5 --v_margin 5 --outcsv
     $ python scripts/board_detection.py   # to detect a board in images
     $ python scripts/board_calibration.py # to calibration with images
 

@@ -47,7 +47,28 @@ def get_options():
         help='set number of markers for creation')
     parser.add_argument(
         '--out_dir', dest='out_dir', type=str, default="../data/markers/",
-        help='set out directory path')
+        help='set output directory path')
+    parser.add_argument(
+        '--board_name', dest='board_name', type=str, default="sample_board",
+        help='set output board image file name')
+    parser.add_argument(
+        '--square_length', dest='square_length', type=float, default=0.028,
+        help="set length value of square")
+    parser.add_argument(
+        '--marker_length', dest='marker_length', type=float, default=0.024,
+        help='set length value of marker')
+    parser.add_argument(
+        '--pixels_per_mm', dest='pixels_per_mm', type=int, default=10,
+        help="set pixels per mm")
+    parser.add_argument(
+        '--h_margin', dest='h_margin', type=int, default=5,
+        help='set horizontal margin')
+    parser.add_argument(
+        '--v_margin', dest='v_margin', type=int, default=5,
+        help='set vertical margin')
+    parser.add_argument(
+        '--outcsv', dest='outcsv', action='store_true', 
+        help='output csv file?')
     return parser.parse_args()
 
 
