@@ -7,12 +7,10 @@ import cv2
 import glob
 import pickle
 import os.path as osp
-import matplotlib.pyplot as plt
 
 import utils
 
 aruco = cv2.aruco
-plt.rcParams['figure.figsize'] = (10.0, 10.0)
 
 
 def detect_ChArUco_board(

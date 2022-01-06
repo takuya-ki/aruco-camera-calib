@@ -7,5 +7,3 @@ data/pictures/*
 data/markers/*
 !data/markers/sample/
 data/result/*
-
-jupyter

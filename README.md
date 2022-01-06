@@ -4,7 +4,6 @@ Camera caribration tool with ArUco library
 
 ## Features
 
-- [Jupyter Notebook](https://jupyter.org/)
 - [ArUco](https://www.uco.es/investiga/grupos/ava/node/26)
 - [OpenCV](https://opencv.org/)
 - Calibration with ArUcoboard
