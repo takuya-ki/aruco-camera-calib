@@ -31,7 +31,7 @@ Camera caribration tool with ArUco library
     $ python script/marker_creation.py --dict 'DICT_4X4_250' --num_pixels 64 --num_markers 5 --out_dir ../data/markers/
     $ python script/board_creation.py --dict 'DICT_5X5_100' --out_dir ../data/board --board_name sample_board --square_length 0.028 --marker_length 0.024 --h_margin 5 --v_margin 5 --save_pkl
     $ python script/board_detection.py --dict 'DICT_5X5_100' --square_length 0.028 --marker_length 0.024 --h_margin 5 --v_margin 5 (--input_board_cfg_pkl --board_cfg_pkl_path ../data/board/sample_board.pkl) --in_dir ../data/pictures/sample --camera_param ../data/result/camera_param.pkl 
-    $ python script/board_calibration.py # to calibration with images
+    $ python script/board_calibration.py --dict 'DICT_5X5_100' --square_length 0.028 --marker_length 0.024 --h_margin 5 --v_margin 5 (--input_board_cfg_pkl --board_cfg_pkl_path ../data/board/sample_board.pkl) --in_dir ../data/pictures/capture --out_dir ../data/result --is_print_calib_result --is_undistort
 
 ## Author
 

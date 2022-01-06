@@ -35,7 +35,7 @@ def detect_ChArUco_board(
     checkerBoardImage = cv2.imread(image_path)
     if checkerBoardImage is None:
         print(osp.basename(image_path)+" cannot be read.")
-        return()
+        return -1
 
     # detect ChArUco markers
     markerCorners, markerIds = [0, 0]
@@ -52,7 +52,7 @@ def detect_ChArUco_board(
     # detect the checker board based on the detected marker
     outImage = checkerBoardImage.copy()
     if markerIds is None:
-        return()
+        return -1
     if markerIds.size > 0:
         charucoCorners, charucoIds = [0, 0]
         cv2.aruco.drawDetectedMarkers(

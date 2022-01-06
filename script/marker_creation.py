@@ -23,8 +23,8 @@ def create_aruco_markers(
         dictionary, marker_i, num_pixels)
     if isSave:
         if savedirpath is None:
-            print("Error: Please specify save path.")
-            return()
+            print("Error: Please specify save marker path.")
+            return -1
         cv2.imwrite(osp.join(
             savedirpath,
             str(marker_i)+'.'+str(num_pixels)+'.png'),

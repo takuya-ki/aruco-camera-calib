@@ -12,6 +12,7 @@ from PIL import Image
 import os.path as osp
 
 aruco = cv2.aruco
+np.set_printoptions(precision=3)
 
 
 ARUCO_DICT = {
@@ -91,6 +92,16 @@ def get_options():
     parser.add_argument(
         '--save_pkl', dest='save_pkl', action='store_true',
         help='output board configuration info in a pkl file?')
+    parser.add_argument(
+        '--calib_result_format', dest='calib_result_format',
+        type=str, default='pkl', choices=['json', 'pkl'],
+        help='set save file format for calibration result , json or pkl')
+    parser.add_argument(
+        '--is_print_calib_result', dest='is_print_calib_result', action='store_true',
+        help='print calibration results?')
+    parser.add_argument(
+        '--is_undistort', dest='is_undistort', action='store_true',
+        help='apply undistortion with calibration results?')
     return parser.parse_args()
 
 
@@ -165,3 +176,40 @@ def get_A4_board(dictionary,
         add_margin(Image.fromarray(boardImage), tb_pixels, lr_pixels))
 
     return board, boardImage_margin
+
+
+def show_calibration_params(calib_params):
+    print("###################################")
+    retval, camMat, distCoeffs, rvecs, tvecs, stdIn, stdEx, projErr = calib_params
+    print("Final re-projection error : \n", retval)
+    print("Camera matrix : \n", camMat)
+    print("Vector of distortion coefficients : \n", distCoeffs)
+    print("Vector of rotation vectors (see Rodrigues) : \n", rvecs)
+    print("Vector of translation vectors : \n", tvecs)
+    print("Vector of std estimated for intrinsic parameters : \n", stdIn)
+    print("Vector of std estimated for extrinsic parameters : \n", stdEx)
+    print("Vector of average re-projection errors : \n", projErr)
+
+
+def undistort(
+        cam_mat, 
+        dist_coeffs, 
+        images,
+        res_dirpath):
+
+    # write the camera matrix
+    imgSize = images[0].shape[:2]
+    h, w = imgSize
+    newcameramtx, roi = cv2.getOptimalNewCameraMatrix(
+        cam_mat, dist_coeffs, (w, h), 1, (w, h))
+
+    for i, img in enumerate(images):
+        dst = cv2.undistort(img,
+                            cam_mat,
+                            dist_coeffs,
+                            None,
+                            newcameramtx)
+        # crop the image
+        x, y, w, h = roi
+        dst = dst[y:y+h, x:x+w]
+        cv2.imwrite(osp.join(res_dirpath, "undist"+str(i+1)+'.png'), dst)
