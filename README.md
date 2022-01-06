@@ -19,7 +19,7 @@ Camera caribration tool with ArUco library
   - numpy 1.21.5
   - pickle-mixin 1.0.2
   - matplotlib 3.1.1
-  - opencv-contrib-python 3.4.2.17
+  - opencv-contrib-python 4.5.1.48
   - pandas 1.1.0
   - pillow 8.4.0
 
