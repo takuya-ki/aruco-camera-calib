@@ -4,7 +4,6 @@ from __future__ import print_function
 
 import os
 import cv2
-import glob
 import pickle
 import os.path as osp
 

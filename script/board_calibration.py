@@ -4,7 +4,6 @@ from __future__ import print_function
 
 import os
 import cv2
-import glob
 import json
 import pickle
 import numpy as np
@@ -24,14 +23,14 @@ def get_calib_images(calib_img_paths, resimgs=False):
             print(osp.basename(calib_img_path)+" cannot be read.")
             continue
         if resimgs:
-            calibImage = cv2.resize(calibImage, (1280,720))
+            calibImage = cv2.resize(calibImage, (1280, 720))
         calibImages.append(calibImage)
     return calibImages
 
 
 def calibrate_with_ChArUco_board(
         result_filepath_no_ext,
-        calibImages, 
+        calibImages,
         calib_result_format,
         dictionary,
         squareL,
@@ -54,32 +53,38 @@ def calibrate_with_ChArUco_board(
     # detect checker board intersection of ChArUco
     allCharucoCorners = []
     allCharucoIds = []
-    charucoCorners, charucoIds = [0,0]
+    charucoCorners, charucoIds = [0, 0]
     decimator = 0
     num_images_to_use = 0
     # critetion for sub pixel corner detection
-    criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 100, 0.00001)
+    criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER,
+                100, 0.00001)
 
-    decimation_interval = 2 # 1 means not applied
+    decimation_interval = 2  # 1 means not applied
     for calImg in calibImages:
-        calImg = cv2.cvtColor(calImg, cv2.COLOR_BGR2GRAY) # convert to gray
+        calImg = cv2.cvtColor(calImg, cv2.COLOR_BGR2GRAY)  # convert to gray
         # find ArUco markers
-        corners, ids, rejectedImgPoints = aruco.detectMarkers(calImg, dictionary)
+        corners, ids, rejectedImgPoints = \
+            aruco.detectMarkers(calImg, dictionary)
         # find ChArUco corners
-        if len(corners)>0:
+        if len(corners) > 0:
             # sub pixel detection
-            # corners = cv2.cornerSubPix(calImg, corners, winSize=(3,3), zeroZone=(-1,-1), criteria=criteria)
+            # corners = cv2.cornerSubPix(
+            #   calImg,
+            #   corners,
+            #   winSize=(3,3),
+            #   zeroZone=(-1,-1),
+            #   criteria=criteria)
             res2 = aruco.interpolateCornersCharuco(
                 corners, ids, calImg, board)
-            if (res2[1] is not None) and \
-               (res2[2] is not None) and \
-               (len(res2[1]) > 5) and \
+            if (res2[1] is not None) and\
+               (res2[2] is not None) and\
+               (len(res2[1]) > 5) and\
                (decimator % decimation_interval == 0):
-                
+
                 allCharucoCorners.append(res2[1])
                 allCharucoIds.append(res2[2])
                 num_images_to_use += 1
-            
             decimator += 1
             aruco.drawDetectedMarkers(calImg, corners, ids)
 
@@ -95,7 +100,7 @@ def calibrate_with_ChArUco_board(
     if isPrintResult:
         utils.show_calibration_params(calib_params)
 
-    retval, camMat, distCoef, rvecs, tvecs, stdIn, stdEx, peojErr = calib_params
+    _, camMat, distCoef, rvecs, tvecs, stdIn, stdEx, peojErr = calib_params
     save_param_list = [camMat, distCoef, rvecs, tvecs, stdIn, stdEx]
 
     # save the camera parameters
@@ -121,8 +126,8 @@ def calibrate_with_ChArUco_board(
             camera_params = pickle.load(f)
         cam_mat, dist_coeffs, rvecs, tvecs, stdIn, stdEx = camera_params
         utils.undistort(
-            cam_mat, 
-            dist_coeffs, 
+            cam_mat,
+            dist_coeffs,
             calibImages,
             undistort_res_dirpath)
 

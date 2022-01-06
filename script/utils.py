@@ -97,7 +97,8 @@ def get_options():
         type=str, default='pkl', choices=['json', 'pkl'],
         help='set save file format for calibration result , json or pkl')
     parser.add_argument(
-        '--is_print_calib_result', dest='is_print_calib_result', action='store_true',
+        '--is_print_calib_result', dest='is_print_calib_result',
+        action='store_true',
         help='print calibration results?')
     parser.add_argument(
         '--is_undistort', dest='is_undistort', action='store_true',
@@ -180,7 +181,8 @@ def get_A4_board(dictionary,
 
 def show_calibration_params(calib_params):
     print("###################################")
-    retval, camMat, distCoeffs, rvecs, tvecs, stdIn, stdEx, projErr = calib_params
+    retval, camMat, distCoeffs, rvecs, tvecs, stdIn, stdEx, projErr = \
+        calib_params
     print("Final re-projection error : \n", retval)
     print("Camera matrix : \n", camMat)
     print("Vector of distortion coefficients : \n", distCoeffs)
@@ -192,8 +194,8 @@ def show_calibration_params(calib_params):
 
 
 def undistort(
-        cam_mat, 
-        dist_coeffs, 
+        cam_mat,
+        dist_coeffs,
         images,
         res_dirpath):
 
