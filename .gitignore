@@ -2,10 +2,10 @@ __pycache__/
 .ipynb_checkpoints
 .vscode
 
-/pictures/*
-!/pictures/sample/
-/markers/*
-!/markers/sample/
-/result/*
+data/pictures/*
+!data/pictures/sample/
+data/markers/*
+!data/markers/sample/
+data/result/*
 
 jupyter
