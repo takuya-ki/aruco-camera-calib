@@ -22,7 +22,7 @@ Camera caribration tool with [ArUco](https://www.uco.es/investiga/grupos/ava/nod
 
 ## Installation
 
-    $ git clone git@github.com:takuya-ki/aruco-camera-calib.git
+    $ git clone git@github.com:takuya-ki/aruco-camera-calib.git; cd aruco-camera-calib
     $ pip install -r requirements.txt
 
 ## Usage
