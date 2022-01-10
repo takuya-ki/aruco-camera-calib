@@ -22,7 +22,7 @@ def detect_marker_image(
     corners, ids, _ = aruco.detectMarkers(frame, dictionary)
     if ids is None:
         print("Not detect any markers.")
-        return
+        return 0
     aruco.drawDetectedMarkers(frame, corners, ids, (0, 255, 0))
     if isSave:
         if savename is None or savedirpath is None:
@@ -41,7 +41,7 @@ if __name__ == '__main__':
     args = utils.get_options()
 
     imgs_dirpath = args.in_dir
-    imgs_dirpath = os.path.join(
+    imgs_dirpath = osp.join(
         osp.dirname(__file__),
         imgs_dirpath)
     if not osp.exists(imgs_dirpath):
@@ -60,7 +60,7 @@ if __name__ == '__main__':
 
     img_paths, img_names = utils.get_file_paths(imgs_dirpath, '*')
     for i, (img_path, img_name) in enumerate(zip(img_paths, img_names)):
-        if not (os.path.splitext(img_name)[1] in ['.png', '.jpg', '.bmp']):
+        if not (osp.splitext(img_name)[1] in ['.png', '.jpg', '.bmp']):
             print("Check file extention: "+img_path)
             continue
         detect_marker_image(

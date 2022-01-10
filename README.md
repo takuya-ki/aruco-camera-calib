@@ -40,10 +40,15 @@ Set the board configuration parameters manually or give the configuration pickle
     $ python src/board_calibration.py --dict 'DICT_5X5_100' --square_length 0.028 --marker_length 0.024 --h_margin 5 --v_margin 5 --in_dir ../data/pictures/capture --out_dir ../data/result --is_print_calib_result --is_undistort
     $ python src/board_calibration.py --input_board_cfg_pkl --board_cfg_pkl_path ../data/board/sample_board.pkl --in_dir ../data/pictures/capture --out_dir ../data/result --is_print_calib_result --is_undistort
 
-Marker detection using the calibration result
+Marker detection
 
     $ python src/marker_detection_images.py --dict 'DICT_4X4_250' --in_dir ../data/pictures/sample_marker --out_dir ../data/pictures/sample_marker/result
     $ python src/marker_detection_videos.py --dict 'DICT_4X4_250' --in_dir ../data/videos/sample_marker --out_dir ../data/videos/sample_marker/result
+
+Marker pose estimation with calibration results
+
+    $ python src/marker_pose_estimation_videos.py --dict 'DICT_4X4_250' --in_dir ../data/videos/sample_marker --out_dir ../data/videos/sample_marker/result --calib_path ../data/result/camera_param.pkl
+
 
 ## Author / Contributor
 

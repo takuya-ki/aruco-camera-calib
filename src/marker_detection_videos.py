@@ -47,7 +47,7 @@ if __name__ == '__main__':
     args = utils.get_options()
 
     videos_dirpath = args.in_dir
-    videos_dirpath = os.path.join(
+    videos_dirpath = osp.join(
         osp.dirname(__file__),
         videos_dirpath)
     if not osp.exists(videos_dirpath):
@@ -66,7 +66,7 @@ if __name__ == '__main__':
 
     video_paths, video_names = utils.get_file_paths(videos_dirpath, '*')
     for i, (v_path, v_name) in enumerate(zip(video_paths, video_names)):
-        if not (os.path.splitext(video_name)[1] in ['.mp4', '.avi']):
+        if not (osp.splitext(video_name)[1] in ['.mp4', '.avi']):
             print("Check file extention: "+v_path)
             continue
         detect_marker_video(
