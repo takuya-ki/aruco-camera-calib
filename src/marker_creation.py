@@ -14,6 +14,7 @@ def create_aruco_markers(
         dictionary,
         marker_i,
         num_pixels,
+        isShow=True,
         isSave=True,
         savedirpath=None):
 
@@ -27,7 +28,8 @@ def create_aruco_markers(
             savedirpath,
             str(marker_i)+'.'+str(num_pixels)+'.png')
         cv2.imwrite(marker_path, marker)
-        utils.imshow(img_path=marker_path, width=800)
+    if isShow:
+        utils.imshow(img=marker, width=800)
 
 
 if __name__ == '__main__':

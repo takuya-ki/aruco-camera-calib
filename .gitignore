@@ -3,7 +3,10 @@ __pycache__/
 .vscode
 
 data/pictures/*
-!data/pictures/sample/
+!data/pictures/sample_board/
+!data/pictures/sample_marker/
 data/markers/*
 !data/markers/sample/
 data/result/*
+data/video/*
+!data/video/sample/

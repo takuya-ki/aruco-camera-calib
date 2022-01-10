@@ -32,13 +32,17 @@ Please carefully check the options before executing scripts. `python src/XXX.py 
 
 Set the board configuration parameters manually or give the configuration pickle file path  
 
-    $ python src/board_detection.py --dict 'DICT_5X5_100' --square_length 0.028 --marker_length 0.024 --h_margin 5 --v_margin 5 --in_dir ../data/pictures/sample --camera_param ../data/result/camera_param.pkl 
-    $ python src/board_detection.py --input_board_cfg_pkl --board_cfg_pkl_path ../data/board/sample_board.pkl --in_dir ../data/pictures/sample --camera_param ../data/result/camera_param.pkl 
+    $ python src/board_detection.py --dict 'DICT_5X5_100' --square_length 0.028 --marker_length 0.024 --h_margin 5 --v_margin 5 --in_dir ../data/pictures/sample_board --camera_param ../data/result/camera_param.pkl 
+    $ python src/board_detection.py --input_board_cfg_pkl --board_cfg_pkl_path ../data/board/sample_board.pkl --in_dir ../data/pictures/sample_board --camera_param ../data/result/camera_param.pkl 
 
 Set the board configuration parameters manually or give the configuration pickle file path  
 
     $ python src/board_calibration.py --dict 'DICT_5X5_100' --square_length 0.028 --marker_length 0.024 --h_margin 5 --v_margin 5 --in_dir ../data/pictures/capture --out_dir ../data/result --is_print_calib_result --is_undistort
     $ python src/board_calibration.py --input_board_cfg_pkl --board_cfg_pkl_path ../data/board/sample_board.pkl --in_dir ../data/pictures/capture --out_dir ../data/result --is_print_calib_result --is_undistort
+
+Marker detection using the calibration result
+
+    $ python src/marker_detection_images.py --dict 'DICT_4X4_250' --in_dir ../data/pictures/sample_marker --out_dir ../data/pictures/sample_marker/result
 
 ## Author / Contributor
 
