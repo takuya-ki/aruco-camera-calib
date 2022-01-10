@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 
 import os
 import cv2
@@ -24,10 +23,11 @@ def create_aruco_markers(
         if savedirpath is None:
             print("Error: Please specify save marker path.")
             return -1
-        cv2.imwrite(osp.join(
+        marker_path = osp.join(
             savedirpath,
-            str(marker_i)+'.'+str(num_pixels)+'.png'),
-            marker)
+            str(marker_i)+'.'+str(num_pixels)+'.png')
+        cv2.imwrite(marker_path, marker)
+        utils.imshow(img_path=marker_path, width=800)
 
 
 if __name__ == '__main__':

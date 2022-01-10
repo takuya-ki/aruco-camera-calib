@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 
 import os
 import cv2
@@ -122,6 +121,24 @@ def read_pickle(pkl_path):
     with open(pkl_path, 'rb') as f:
         data = pickle.load(f)
     return data
+
+
+def scale_to_width(img, width):
+    scale = width / img.shape[1]
+    return cv2.resize(img, dsize=None, fx=scale, fy=scale)
+
+
+def imshow(img_path="", img=None, wname='image', width=None):
+    if img is None:
+        img = cv2.imread(img_path)
+    if width is not None:
+        img = scale_to_width(img, width)
+    cv2.startWindowThread()
+    cv2.namedWindow('image', cv2.WINDOW_AUTOSIZE)
+    cv2.moveWindow('image', 50, 100)
+    cv2.imshow('image', img)
+    cv2.waitKey(3000)
+    cv2.destroyAllWindows()
 
 
 def max_within_upper(num, upper):

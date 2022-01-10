@@ -1,28 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 
 import os
 import cv2
 import pickle
 import os.path as osp
-import matplotlib.pyplot as plt
 
 import utils
 
 aruco = cv2.aruco
-plt.rcParams['figure.figsize'] = (10.0, 10.0)
-
-
-def imshow(img_path="", img=None):
-    if img is None:
-        if not img_path:
-            print("Give an image path or an image data to imshow().")
-            return -1
-        else:
-            img = cv2.imread(img_path)
-    plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-    plt.show()
 
 
 def make_board_cfg_pickle(
@@ -65,7 +51,7 @@ def create_ChArUco_board_in_A4size(
         pixels_per_mm)
     board_path = osp.join(board_dirpath, board_filename)
     cv2.imwrite(board_path, board_img)
-    imshow(img_path=board_path)
+    utils.imshow(img_path=board_path, width=600)
 
     if save_pkl:
         # remove the extention from the board_name

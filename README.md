@@ -16,7 +16,6 @@ Camera caribration tool with [ArUco](https://www.uco.es/investiga/grupos/ava/nod
 - Python 3.7.3
   - numpy 1.21.5
   - pillow 8.4.0
-  - matplotlib 3.1.1
   - pickle-mixin 1.0.2
   - opencv-contrib-python 4.5.1.48
 
