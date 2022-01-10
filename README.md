@@ -43,6 +43,7 @@ Set the board configuration parameters manually or give the configuration pickle
 Marker detection using the calibration result
 
     $ python src/marker_detection_images.py --dict 'DICT_4X4_250' --in_dir ../data/pictures/sample_marker --out_dir ../data/pictures/sample_marker/result
+    $ python src/marker_detection_videos.py --dict 'DICT_4X4_250' --in_dir ../data/videos/sample_marker --out_dir ../data/videos/sample_marker/result
 
 ## Author / Contributor
 
