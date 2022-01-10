@@ -8,5 +8,6 @@ data/pictures/*
 data/markers/*
 !data/markers/sample/
 data/result/*
-data/video/*
-!data/video/sample/
+data/videos/*
+!data/videos/sample_marker/
+data/videos/sample_marker/result

@@ -103,7 +103,8 @@ def get_options():
         '--is_undistort', dest='is_undistort', action='store_true',
         help='apply undistortion with calibration results?')
     parser.add_argument(
-        '--calib_path', dest='calib_path', type=str, default="../data/result/camera_param.pkl",
+        '--calib_path', dest='calib_path',
+        type=str, default="../data/result/camera_param.pkl",
         help='set calibration file path')
     return parser.parse_args()
 
@@ -131,17 +132,16 @@ def scale_to_width(img, width):
     return cv2.resize(img, dsize=None, fx=scale, fy=scale)
 
 
-def imshow(img_path="", img=None, wname='image', width=None):
+def imshow(img_path="", img=None, wn='image', wsec=3000, width=None):
     if img is None:
         img = cv2.imread(img_path)
     if width is not None:
         img = scale_to_width(img, width)
     cv2.startWindowThread()
-    cv2.namedWindow('image', cv2.WINDOW_AUTOSIZE)
-    cv2.moveWindow('image', 50, 100)
-    cv2.imshow('image', img)
-    cv2.waitKey(3000)
-    cv2.destroyAllWindows()
+    cv2.namedWindow(wn, cv2.WINDOW_AUTOSIZE)
+    cv2.moveWindow(wn, 50, 100)
+    cv2.imshow(wn, img)
+    cv2.waitKey(wsec)
 
 
 def max_within_upper(num, upper):

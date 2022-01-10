@@ -10,7 +10,7 @@ import utils
 aruco = cv2.aruco
 
 
-def detect_markers(        
+def detect_marker_image(
         dictionary,
         img_path,
         isShow=True,
@@ -19,8 +19,10 @@ def detect_markers(
         savedirpath=None):
 
     frame = cv2.imread(img_path)
-    height, width = frame.shape[:2]
     corners, ids, _ = aruco.detectMarkers(frame, dictionary)
+    if ids is None:
+        print("Not detect any markers.")
+        return
     aruco.drawDetectedMarkers(frame, corners, ids, (0, 255, 0))
     if isSave:
         if savename is None or savedirpath is None:
@@ -37,7 +39,7 @@ def detect_markers(
 
 if __name__ == '__main__':
     args = utils.get_options()
-    
+
     imgs_dirpath = args.in_dir
     imgs_dirpath = os.path.join(
         osp.dirname(__file__),
@@ -58,9 +60,11 @@ if __name__ == '__main__':
 
     img_paths, img_names = utils.get_file_paths(imgs_dirpath, '*')
     for i, (img_path, img_name) in enumerate(zip(img_paths, img_names)):
-        if os.path.splitext(img_name)[1] in ['.png', '.jpg', '.bmp']:
-            detect_markers(
-                utils.get_aruco_dict(args.aruco_dict),
-                img_path,
-                savename=i,
-                savedirpath=resimg_dirpath)
+        if not (os.path.splitext(img_name)[1] in ['.png', '.jpg', '.bmp']):
+            print("Check file extention: "+img_path)
+            continue
+        detect_marker_image(
+            utils.get_aruco_dict(args.aruco_dict),
+            img_path,
+            savename=i,
+            savedirpath=resimg_dirpath)
