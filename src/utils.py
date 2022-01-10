@@ -102,10 +102,6 @@ def get_options():
     parser.add_argument(
         '--is_undistort', dest='is_undistort', action='store_true',
         help='apply undistortion with calibration results?')
-    parser.add_argument(
-        '--calib_path', dest='calib_path',
-        type=str, default="../data/result/camera_param.pkl",
-        help='set calibration file path')
     return parser.parse_args()
 
 

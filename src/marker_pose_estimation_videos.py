@@ -91,7 +91,7 @@ if __name__ == '__main__':
         exit()
 
     cam_param_path = osp.join(
-        osp.dirname(__file__), args.calib_path)
+        osp.dirname(__file__), args.camera_param_path)
     with open(cam_param_path, 'rb') as f:
         camera_params = pickle.load(f)
     cameramat, distcoeff, rvecs, tvecs, stdIn, stdEx = camera_params

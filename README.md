@@ -47,8 +47,8 @@ Marker detection
 
 Marker pose estimation with calibration results
 
-    $ python src/marker_pose_estimation_videos.py --dict 'DICT_4X4_250' --in_dir ../data/videos/sample_marker --out_dir ../data/videos/sample_marker/result --calib_path ../data/result/camera_param.pkl
-
+    $ python src/marker_pose_estimation_images.py --dict 'DICT_4X4_250' --in_dir ../data/pictures/sample_marker --out_dir ../data/pictures/sample_marker/result --camera_param ../data/result/camera_param.pkl
+    $ python src/marker_pose_estimation_videos.py --dict 'DICT_4X4_250' --in_dir ../data/videos/sample_marker --out_dir ../data/videos/sample_marker/result --camera_param ../data/result/camera_param.pkl
 
 ## Author / Contributor
 
