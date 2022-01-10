@@ -26,11 +26,20 @@ Camera caribration tool with [ArUco](https://www.uco.es/investiga/grupos/ava/nod
     $ pip install -r requirements.txt
 
 ## Usage
+Please carefully check the options before executing scripts. `python src/XXX.py --help`
 
     $ python src/marker_creation.py --dict 'DICT_4X4_250' --num_pixels 64 --num_markers 5 --out_dir ../data/markers/
     $ python src/board_creation.py --dict 'DICT_5X5_100' --out_dir ../data/board --board_name sample_board --square_length 0.028 --marker_length 0.024 --h_margin 5 --v_margin 5 --save_pkl
-    $ python src/board_detection.py --dict 'DICT_5X5_100' --square_length 0.028 --marker_length 0.024 --h_margin 5 --v_margin 5 (--input_board_cfg_pkl --board_cfg_pkl_path ../data/board/sample_board.pkl) --in_dir ../data/pictures/sample --camera_param ../data/result/camera_param.pkl 
-    $ python src/board_calibration.py --dict 'DICT_5X5_100' --square_length 0.028 --marker_length 0.024 --h_margin 5 --v_margin 5 (--input_board_cfg_pkl --board_cfg_pkl_path ../data/board/sample_board.pkl) --in_dir ../data/pictures/capture --out_dir ../data/result --is_print_calib_result --is_undistort
+
+Set the board configuration parameters manually or give the configuration pickle file path  
+
+    $ python src/board_detection.py --dict 'DICT_5X5_100' --square_length 0.028 --marker_length 0.024 --h_margin 5 --v_margin 5 --in_dir ../data/pictures/sample --camera_param ../data/result/camera_param.pkl 
+    $ python src/board_detection.py --input_board_cfg_pkl --board_cfg_pkl_path ../data/board/sample_board.pkl --in_dir ../data/pictures/sample --camera_param ../data/result/camera_param.pkl 
+
+Set the board configuration parameters manually or give the configuration pickle file path  
+
+    $ python src/board_calibration.py --dict 'DICT_5X5_100' --square_length 0.028 --marker_length 0.024 --h_margin 5 --v_margin 5 --in_dir ../data/pictures/capture --out_dir ../data/result --is_print_calib_result --is_undistort
+    $ python src/board_calibration.py --input_board_cfg_pkl --board_cfg_pkl_path ../data/board/sample_board.pkl --in_dir ../data/pictures/capture --out_dir ../data/result --is_print_calib_result --is_undistort
 
 ## Author / Contributor
 
