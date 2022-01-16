@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import os
 import cv2
@@ -17,6 +16,7 @@ def create_aruco_markers(
         isShow=True,
         isSave=True,
         savedirpath=None):
+    """Creates aruco markers and saves and/or shows the images."""
 
     marker = aruco.drawMarker(
         dictionary, marker_i, num_pixels)

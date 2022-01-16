@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import os
 import cv2
@@ -18,6 +17,7 @@ def make_board_cfg_pickle(
         markerL,
         tb,
         lr):
+    """Saves board configuration data as a pickle file."""
 
     board_cfg_dict = {
         'dict_label': dict_label,
@@ -41,6 +41,7 @@ def create_ChArUco_board_in_A4size(
         lr,
         pixels_per_mm,
         save_pkl=False):
+    """Creates a ChArUco board of A4 size and save the config data."""
 
     _, board_img = utils.get_A4_board(
         dictionary,

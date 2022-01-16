@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import os
 import cv2
@@ -17,6 +16,7 @@ def detect_marker_video(
         isSave=True,
         savename=None,
         savedirpath=None):
+    """Detects and shows detected board in the video."""
 
     cap = cv2.VideoCapture(video_path)
     cnt = 0

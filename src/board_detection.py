@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import os
 import cv2
@@ -21,6 +20,7 @@ def detect_ChArUco_board(
         pixels_per_mm,
         cameraMatrix,
         distCoeffs):
+    """Detects and shows detected board in the image."""
 
     board, _ = utils.get_A4_board(
         dictionary,

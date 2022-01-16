@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import os
 import cv2
@@ -17,6 +16,7 @@ def pose_esitmation(
         marker_length,
         camera_matrix,
         dist_coeffs):
+    """Estimates poses of detected markers in the frame."""
 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     parameters = aruco.DetectorParameters_create()
@@ -53,6 +53,7 @@ def estimate_marker_pose_image(
         isSave=True,
         savename=None,
         savedirpath=None):
+    """Reads an image and saves and/or shows the result images."""
 
     frame = cv2.imread(img_path)
     frame = pose_esitmation(

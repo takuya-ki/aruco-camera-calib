@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import os
 import cv2
@@ -40,6 +39,7 @@ ARUCO_DICT = {
 
 
 def get_options():
+    """Returns user-specific options."""
     parser = argparse.ArgumentParser(description='Set options.')
     parser.add_argument(
         '--dict', dest='aruco_dict', type=str,
@@ -106,6 +106,7 @@ def get_options():
 
 
 def get_file_paths(file_dirpath, file_ext):
+    """Get file names and paths."""
     path = osp.join(file_dirpath, '*.'+file_ext)
     file_names = [osp.basename(r) for r in glob.glob(path)]
     file_paths = [osp.join(file_dirpath, fs) for fs in file_names]
@@ -114,21 +115,25 @@ def get_file_paths(file_dirpath, file_ext):
 
 
 def get_aruco_dict(dict_label):
+    """Returns one of the dictionaries defined in ARUCO_DICT[dict_label]."""
     return aruco.getPredefinedDictionary(ARUCO_DICT[dict_label])
 
 
 def read_pickle(pkl_path):
+    """Returns loaded data from a pickle file."""
     with open(pkl_path, 'rb') as f:
         data = pickle.load(f)
     return data
 
 
 def scale_to_width(img, width):
+    """Returns resized OpenCV image data with a specified image width."""
     scale = width / img.shape[1]
     return cv2.resize(img, dsize=None, fx=scale, fy=scale)
 
 
 def imshow(img_path="", img=None, wn='image', wsec=3000, width=None):
+    """Show an OpenCV image with a certain manner."""
     if img is None:
         img = cv2.imread(img_path)
     if width is not None:
@@ -141,6 +146,7 @@ def imshow(img_path="", img=None, wn='image', wsec=3000, width=None):
 
 
 def max_within_upper(num, upper):
+    """Calculate ChArUco board size to spread as many markers as possible."""
     i = 1
     while True:
         if num*i > upper:
@@ -150,6 +156,7 @@ def max_within_upper(num, upper):
 
 
 def add_margin(pil_img, tb_pixels, lr_pixels):
+    """Returns ChArUco board image with specified margin added."""
     width, height = pil_img.size
     new_width = width + lr_pixels
     new_height = height + tb_pixels
@@ -164,6 +171,7 @@ def get_A4_board(dictionary,
                  tb,
                  lr,
                  pixels_per_mm):
+    """Returns ChArUco board and final image."""
 
     # calculate parameters for board [mm]
     A4size = (210, 297)
@@ -196,6 +204,7 @@ def get_A4_board(dictionary,
 
 
 def show_calibration_params(calib_params):
+    """Prints all the calibration parameters."""
     print("###################################")
     retval, camMat, distCoeffs, rvecs, tvecs, stdIn, stdEx, projErr = \
         calib_params
@@ -214,6 +223,7 @@ def undistort(
         dist_coeffs,
         images,
         res_dirpath):
+    """Saves undistorted images with specified calibration parameters."""
 
     # write the camera matrix
     imgSize = images[0].shape[:2]

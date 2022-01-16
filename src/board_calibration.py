@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import os
 import cv2
@@ -15,6 +14,7 @@ np.set_printoptions(precision=3)
 
 
 def get_calib_images(calib_img_paths, resimgs=False):
+    """Reads and returns images used for calibration."""
     calibImages = []
     for calib_img_path in calib_img_paths:
         calibImage = cv2.imread(calib_img_path)
@@ -40,6 +40,7 @@ def calibrate_with_ChArUco_board(
         isUndistort=False,
         isPrintResult=False,
         undistort_res_dirpath=None):
+    """Caribrate the camera using images of specified ChArUco board."""
 
     board, _ = utils.get_A4_board(
         dictionary,

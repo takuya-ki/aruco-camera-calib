@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import os
 import cv2
@@ -17,6 +16,7 @@ def detect_marker_image(
         isSave=True,
         savename=None,
         savedirpath=None):
+    """Detects and shows detected markers in the image."""
 
     frame = cv2.imread(img_path)
     corners, ids, _ = aruco.detectMarkers(frame, dictionary)
