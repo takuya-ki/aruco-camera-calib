@@ -13,10 +13,11 @@ aruco = cv2.aruco
 np.set_printoptions(precision=3)
 
 
-def get_calib_images(calib_img_paths, resimgs=False):
+def get_calib_images(calib_img_paths, calib_img_names, resimgs=False):
     """Reads and returns images used for calibration."""
     calibImages = []
-    for calib_img_path in calib_img_paths:
+    calibImgNames = []
+    for calib_img_path, calib_img_name in zip(calib_img_paths, calib_img_names):
         calibImage = cv2.imread(calib_img_path)
         if calibImage is None:
             print(osp.basename(calib_img_path)+" cannot be read.")
@@ -24,11 +25,13 @@ def get_calib_images(calib_img_paths, resimgs=False):
         if resimgs:
             calibImage = cv2.resize(calibImage, (1280, 720))
         calibImages.append(calibImage)
-    return calibImages
+        calibImgNames.append(calib_img_name)
+    return calibImages, calibImgNames
 
 
 def calibrate_with_ChArUco_board(
         result_filepath_no_ext,
+        calibImgNames,
         calibImages,
         calib_result_format,
         dictionary,
@@ -61,7 +64,8 @@ def calibrate_with_ChArUco_board(
                 100, 0.00001)
 
     decimation_interval = 2  # 1 means not applied
-    for calImg in calibImages:
+    useImgNames = []
+    for calImg, calibImgName in zip(calibImages, calibImgNames):
         calImg = cv2.cvtColor(calImg, cv2.COLOR_BGR2GRAY)  # convert to gray
         # find ArUco markers
         corners, ids, rejectedImgPoints = \
@@ -85,10 +89,12 @@ def calibrate_with_ChArUco_board(
                 allCharucoCorners.append(res2[1])
                 allCharucoIds.append(res2[2])
                 num_images_to_use += 1
+                useImgNames.append(calibImgName)
             decimator += 1
             aruco.drawDetectedMarkers(calImg, corners, ids)
 
     print("\n Use "+str(num_images_to_use)+" images for this calibration.")
+    print(useImgNames)
     try:
         imgSize = calibImages[0].shape[:2]
         calib_params = aruco.calibrateCameraCharucoExtended(
@@ -169,10 +175,12 @@ if __name__ == '__main__':
         tb = board_cfg['margin_tb']
         lr = board_cfg['margin_lr']
 
-    img_paths, _ = utils.get_file_paths(calib_image_dirpath, '*')
+    img_paths, img_names = utils.get_file_paths(calib_image_dirpath, '*')
+    imgs, img_ns = get_calib_images(img_paths, img_names, resimgs=True)
     calibrate_with_ChArUco_board(
         result_filepath_no_ext,
-        get_calib_images(img_paths, resimgs=True),
+        img_ns,
+        imgs,
         args.calib_result_format,
         dictionary,
         squareL,
