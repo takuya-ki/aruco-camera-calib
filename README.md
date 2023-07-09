@@ -1,6 +1,7 @@
 # aruco-camera-calib
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![repo size](https://img.shields.io/github/repo-size/takuya-ki/aruco-camera-calib)
 
 Camera caribration tool with [ArUco](https://www.uco.es/investiga/grupos/ava/node/26) library.
 
