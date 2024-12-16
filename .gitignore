@@ -5,6 +5,7 @@ __pycache__/
 data/pictures/*
 !data/pictures/sample_board/
 !data/pictures/sample_marker/
+data/pictures/sample_marker/result
 data/markers/*
 !data/markers/sample/
 data/result/*
