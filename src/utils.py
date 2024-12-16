@@ -185,9 +185,8 @@ def get_A4_board(dictionary,
     lr_pixels = A4size[0]*pixels_per_mm - boardPixX
 
     # create board image
-    board = aruco.CharucoBoard_create(
-        squareNumX,
-        squareNumY,
+    board = aruco.CharucoBoard(
+        (squareNumX, squareNumY),
         squareL,
         markerL,
         dictionary)
@@ -195,7 +194,7 @@ def get_A4_board(dictionary,
     # third parameter is the (optional) margin in pixels
     # if it is set as 0, none of the markers are touching the image border
     # the last parameter is the size of the marker border
-    boardImage = board.draw((boardPixX, boardPixY), None, 0, 1)
+    boardImage = board.generateImage((boardPixX, boardPixY), None, 0, 1)
     # add the margin to the image
     boardImage_margin = np.asarray(
         add_margin(Image.fromarray(boardImage), tb_pixels, lr_pixels))
