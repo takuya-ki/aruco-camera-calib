@@ -18,7 +18,7 @@ def create_aruco_markers(
         savedirpath=None):
     """Creates aruco markers and saves and/or shows the images."""
 
-    marker = aruco.drawMarker(
+    marker = aruco.generateImageMarker(
         dictionary, marker_i, num_pixels)
     if isSave:
         if savedirpath is None:
