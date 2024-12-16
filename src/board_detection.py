@@ -29,6 +29,8 @@ def detect_ChArUco_board(
         tb,
         lr,
         pixels_per_mm)
+    parameters = aruco.DetectorParameters()
+    detector = aruco.CharucoDetector(board)
 
     checkerBoardImage = cv2.imread(image_path)
     if checkerBoardImage is None:
@@ -58,12 +60,12 @@ def detect_ChArUco_board(
 
         retval, charucoCorners, charucoIds = aruco.interpolateCornersCharuco(
             markerCorners, markerIds, checkerBoardImage, board)
-        outImage = aruco.drawDetectedCornersCharuco(
-            outImage, charucoCorners, charucoIds)
+        # outImage = aruco.drawDetectedCornersCharuco(
+        #     outImage, charucoCorners, charucoIds)
 
         # use a camera parameter
         retval, rvec, tvec = aruco.estimatePoseCharucoBoard(
-            charucoCorners, charucoIds, board, cameraMatrix, distCoeffs)
+            charucoCorners, charucoIds, board, cameraMatrix, distCoeffs, rvecs[0], tvecs[0])
         if retval:
             aruco.drawAxis(outImage, cameraMatrix, distCoeffs, rvec, tvec, 0.1)
 

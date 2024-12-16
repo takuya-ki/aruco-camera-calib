@@ -19,13 +19,11 @@ def pose_esitmation(
     """Estimates poses of detected markers in the frame."""
 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    parameters = aruco.DetectorParameters_create()
+    parameters = aruco.DetectorParameters()
     corners, ids, _ = aruco.detectMarkers(
         gray,
         dictionary,
-        parameters=parameters,
-        cameraMatrix=camera_matrix,
-        distCoeff=dist_coeffs)
+        parameters=parameters)
     if ids is None:
         print("Not detect any markers.")
         return None
@@ -38,8 +36,6 @@ def pose_esitmation(
                 corners[i], marker_length, camera_matrix, dist_coeffs)
             # draw a square around the markers
             aruco.drawDetectedMarkers(frame, corners)
-            # draw Axis
-            aruco.drawAxis(frame, camera_matrix, dist_coeffs, rvec, tvec, 0.01)
     return frame
 
 
