@@ -2,7 +2,6 @@
 
 import os
 import cv2
-import pickle
 import os.path as osp
 
 import utils
@@ -10,7 +9,7 @@ import utils
 aruco = cv2.aruco
 
 
-def pose_esitmation(
+def pose_estimation(
         frame,
         dictionary,
         marker_length,
@@ -52,7 +51,7 @@ def estimate_marker_pose_image(
     """Reads an image and saves and/or shows the result images."""
 
     frame = cv2.imread(img_path)
-    frame = pose_esitmation(
+    frame = pose_estimation(
         frame, dictionary, marker_length, camera_matrix, dist_coeffs)
     if frame is None:
         return
@@ -81,8 +80,7 @@ if __name__ == '__main__':
 
     cam_param_path = osp.join(
         osp.dirname(__file__), args.camera_param_path)
-    with open(cam_param_path, 'rb') as f:
-        camera_params = pickle.load(f)
+    camera_params = utils.read_pickle(cam_param_path)
     cameramat, distcoeff, rvecs, tvecs, stdIn, stdEx = camera_params
 
     # delete files under save dir and make save dir
@@ -95,7 +93,6 @@ if __name__ == '__main__':
         [os.remove(mpath) for mpath in resimg_paths]
     os.makedirs(resimg_dirpath, exist_ok=True)
 
-    marker_length = 0.02  # [m]
     img_paths, img_names = utils.get_file_paths(imgs_dirpath, '*')
     for i, (img_path, img_name) in enumerate(zip(img_paths, img_names)):
         if not (osp.splitext(img_name)[1] in ['.png', '.jpg', '.bmp']):
@@ -103,7 +100,7 @@ if __name__ == '__main__':
             continue
         estimate_marker_pose_image(
             utils.get_aruco_dict(args.aruco_dict),
-            marker_length,
+            args.marker_length,
             img_path,
             cameramat,
             distcoeff,

@@ -43,7 +43,7 @@ def calibrate_with_ChArUco_board(
         isUndistort=False,
         isPrintResult=False,
         undistort_res_dirpath=None):
-    """Caribrate the camera using images of specified ChArUco board."""
+    """Calibrate the camera using images of specified ChArUco board."""
 
     board, _ = utils.get_A4_board(
         dictionary,
@@ -56,19 +56,14 @@ def calibrate_with_ChArUco_board(
     # detect checker board intersection of ChArUco
     allCharucoCorners = []
     allCharucoIds = []
-    charucoCorners, charucoIds = [0, 0]
     decimator = 0
     num_images_to_use = 0
-    # critetion for sub pixel corner detection
-    criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER,
-                100, 0.00001)
-
     decimation_interval = 2  # 1 means not applied
     useImgNames = []
     for calImg, calibImgName in zip(calibImages, calibImgNames):
         calImg = cv2.cvtColor(calImg, cv2.COLOR_BGR2GRAY)  # convert to gray
         # find ArUco markers
-        corners, ids, rejectedImgPoints = \
+        corners, ids, _ = \
             aruco.detectMarkers(calImg, dictionary)
         # find ChArUco corners
         if len(corners) > 0:
@@ -106,17 +101,17 @@ def calibrate_with_ChArUco_board(
     if isPrintResult:
         utils.show_calibration_params(calib_params)
 
-    _, camMat, distCoef, rvecs, tvecs, stdIn, stdEx, peojErr = calib_params
+    _, camMat, distCoef, rvecs, tvecs, stdIn, stdEx, projErr = calib_params
     save_param_list = [camMat, distCoef, rvecs, tvecs, stdIn, stdEx]
 
     # save the camera parameters
     if calib_result_format == 'json':
         cam_param_path = result_filepath_no_ext+'.json'
         with open(cam_param_path, mode='w') as f:
-            data = {"camera_matrix": cameraMatrix.tolist(),
-                    "dist_coeff": distCoeffs.tolist(),
-                    "rvecs": rvecs,
-                    "tvecs": tvecs}
+            data = {"camera_matrix": camMat.tolist(),
+                    "dist_coeff": distCoef.tolist(),
+                    "rvecs": [r.tolist() for r in rvecs],
+                    "tvecs": [t.tolist() for t in tvecs]}
             json.dump(data, f, sort_keys=True, indent=4)
     elif calib_result_format == 'pkl':
         cam_param_path = result_filepath_no_ext+'.pkl'

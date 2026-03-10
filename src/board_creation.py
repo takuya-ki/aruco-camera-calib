@@ -68,18 +68,17 @@ def create_ChArUco_board_in_A4size(
 if __name__ == '__main__':
     args = utils.get_options()
 
-    board_filename = args.board_name+".png"
-    os.makedirs(osp.join(osp.dirname(__file__), "../data/board"),
-                exist_ok=True)
+    out_dirpath = osp.join(osp.dirname(__file__), args.out_dir)
+    os.makedirs(out_dirpath, exist_ok=True)
 
     create_ChArUco_board_in_A4size(
-        osp.join(osp.dirname(__file__), args.out_dir),
+        out_dirpath,
         args.board_name+'.png',
         args.aruco_dict,
         utils.get_aruco_dict(args.aruco_dict),
         args.square_length,
         args.marker_length,
-        args.v_margin,      # minimum horizontal margins [mm]
-        args.h_margin,      # minimum vertical margins [mm]
+        args.v_margin,      # minimum top-bottom (vertical) margins [mm]
+        args.h_margin,      # minimum left-right (horizontal) margins [mm]
         args.pixels_per_mm,
         save_pkl=args.save_pkl)

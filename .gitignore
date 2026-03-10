@@ -12,3 +12,6 @@ data/result/*
 data/videos/*
 !data/videos/sample_marker/
 data/videos/sample_marker/result
+
+.claude
+CLAUDE.md

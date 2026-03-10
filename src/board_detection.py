@@ -2,7 +2,6 @@
 
 import os
 import cv2
-import pickle
 import os.path as osp
 
 import utils
@@ -29,16 +28,12 @@ def detect_ChArUco_board(
         tb,
         lr,
         pixels_per_mm)
-    parameters = aruco.DetectorParameters()
-    detector = aruco.CharucoDetector(board)
-
     checkerBoardImage = cv2.imread(image_path)
     if checkerBoardImage is None:
         print(osp.basename(image_path)+" cannot be read.")
         return -1
 
     # detect ChArUco markers
-    markerCorners, markerIds = [0, 0]
     markerCorners, markerIds, rejectedImgPoints = \
         aruco.detectMarkers(checkerBoardImage, dictionary)
     markerCorners, markerIds, rejectedImgPoints, recoveredIdxs = \
@@ -54,7 +49,6 @@ def detect_ChArUco_board(
     if markerIds is None:
         return -1
     if markerIds.size > 0:
-        charucoCorners, charucoIds = [0, 0]
         cv2.aruco.drawDetectedMarkers(
             outImage, markerCorners, markerIds)
 
@@ -67,7 +61,7 @@ def detect_ChArUco_board(
         retval, rvec, tvec = aruco.estimatePoseCharucoBoard(
             charucoCorners, charucoIds, board, cameraMatrix, distCoeffs, rvecs[0], tvecs[0])
         if retval:
-            aruco.drawAxis(outImage, cameraMatrix, distCoeffs, rvec, tvec, 0.1)
+            cv2.drawFrameAxes(outImage, cameraMatrix, distCoeffs, rvec, tvec, 0.1)
 
     cv2.imshow("detected", outImage)
     cv2.waitKey(0)
